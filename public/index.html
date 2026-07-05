@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>assistant.dev — Coding Assistant</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="noise-overlay" aria-hidden="true"></div>
+
+    <div class="wrap">
+
+        <!-- ================= HERO / BOOT SEQUENCE ================= -->
+        <header class="hero">
+            <div class="term-chrome">
+                <div class="term-dots">
+                    <span class="dot dot-red"></span>
+                    <span class="dot dot-amber"></span>
+                    <span class="dot dot-green"></span>
+                </div>
+                <span class="term-path">zsh — assistant.dev — 80×24</span>
+            </div>
+
+            <div class="term-body">
+                <p class="boot-line" style="--d:0s">
+                    <span class="prompt-sigil">$</span> ./boot assistant<span class="cursor-caret"></span>
+                </p>
+                <p class="boot-line" style="--d:1.1s">
+                    <span class="tok-comment">// loading language models, syntax rules, stack traces…</span>
+                </p>
+                <p class="boot-line" style="--d:1.9s">
+                    <span class="tok-ok">✓</span> ready in <span class="tok-num">0.42s</span>
+                </p>
+
+                <h1 class="brand">
+                    <span class="tok-kw">const</span> <span class="tok-fn">assistant</span> <span class="tok-op">=</span> <span class="tok-str">"Coding&nbsp;Bot"</span><span class="tok-op">;</span>
+                </h1>
+                <p class="subtitle"><span class="tok-comment">// answers questions about code — nothing else. powered by Azure OpenAI.</span></p>
+            </div>
+        </header>
+
+        <!-- ================= SYSTEM PROMPT ================= -->
+        <section class="card" aria-labelledby="cfg-title">
+            <div class="card-tab">
+                <span class="filename">assistant.config</span>
+                <span class="badge">system prompt</span>
+            </div>
+            <div class="card-inner">
+                <p id="cfg-title" class="eyebrow tok-comment">// define who this bot is and what it's allowed to talk about</p>
+                <div class="editor-shell">
+                    <textarea id="systemPrompt" spellcheck="false" placeholder="You are a helpful AI Coding Assistant…">You are a helpful AI Coding Assistant. You only answer questions related to programming, debugging, algorithms, software development, databases, web development, mobile development, APIs, and computer science concepts. You explain solutions clearly and provide code examples when appropriate. If asked anything outside this scope, politely decline.</textarea>
+                </div>
+                <p class="hint">Changes apply to your next question — nothing is saved.</p>
+            </div>
+        </section>
+
+        <!-- ================= CHAT ================= -->
+        <section class="card" aria-labelledby="chat-title">
+            <div class="card-tab">
+                <span class="filename">session.log</span>
+                <span class="badge badge-live"><span class="live-dot"></span> live</span>
+            </div>
+            <div class="card-inner">
+                <p id="chat-title" class="eyebrow tok-comment">// ask anything about programming, debugging, or software design</p>
+
+                <div id="chatBox" class="chat-box">
+                    <div class="message bot" data-line="01">
+                        <span class="gutter">01</span>
+                        <span class="bubble">Hi — I'm your coding assistant. Ask me about a bug, an algorithm, or how to structure something, and I'll walk through it.</span>
+                    </div>
+                </div>
+
+                <form id="chatForm" class="input-row" autocomplete="off">
+                    <span class="input-sigil">&gt;</span>
+                    <input type="text" id="userInput" placeholder="e.g. why is my useEffect running twice?" aria-label="Ask a coding question" />
+                    <button type="submit" id="sendBtn">
+                        <span class="btn-label">Ask</span>
+                        <span class="btn-arrow">→</span>
+                    </button>
+                </form>
+            </div>
+        </section>
+
+        <footer class="foot">
+            <span class="tok-comment">// FAQBot · built for developers</span>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
